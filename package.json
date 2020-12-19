@@ -1,0 +1,26 @@
+{
+  "name": "rosr-extract",
+  "version": "1.0.0",
+  "description": "Rosreestr archive data extractor to csv table",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i2r/rosr.git"
+  },
+  "keywords": [
+    "rosreestr"
+  ],
+  "author": "Igor Spisivtsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i2r/rosr/issues"
+  },
+  "homepage": "https://github.com/i2r/rosr#readme",
+  "devDependencies": {
+    "fast-xml-parser": "^3.17.5",
+    "findit": "^2.0.0"
+  }
+}
