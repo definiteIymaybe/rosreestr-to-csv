@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/i2r/rosr#readme",
   "devDependencies": {
+    "easy-object-selector": "^1.3.0",
     "fast-xml-parser": "^3.17.5",
-    "findit": "^2.0.0"
+    "findit": "^2.0.0",
+    "objects-to-csv": "^1.3.6"
   }
 }
