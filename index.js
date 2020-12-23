@@ -56,12 +56,13 @@ const FN = {
 };
 
 findExtAndCall(dir, 'zip', processFile)
-    .then((result) => {
+    .then(async (result) => {
         console.log('FINISHED', dir);
         console.log(`PROCESSED ${result.length} FILES`);
 
-        writeData();
-        // process.exit(true ? 0 : 1);
+        await writeData();
+
+        process.exit(true ? 0 : 1);
     });
 
 async function writeData() {
