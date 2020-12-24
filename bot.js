@@ -8,9 +8,14 @@ if (!accessKey) {
 }
 
 const REQUEST_TIMEOUT = 5 * 60 * 1000;
-const objectList = [
-    // Object IDs goes here
-];
+
+const fs = require('fs');
+const path = require('path');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+const objectListFile = path.normalize(process.argv[4] || './list.txt');
+const resultFile = `${path.dirname(objectListFile)}/result-${path.basename(objectListFile)}`;
+const objectList = fs.readFileSync(objectListFile, 'utf8').trim().split('\n').map(item => item.trim());
 
 const {Builder, By, Key, until} = require('selenium-webdriver');
 const {
@@ -33,6 +38,9 @@ context.drawImage(img, 0, 0, img.width, img.height);
 document.body.setAttribute('data-img', canvas.toDataURL('image/png'));
 `;
 
+async function writeResult(result) {
+    await exec(`echo ${result} >> ${resultFile}`);
+}
 
 (async () => {
     for (let i = objectList.length; i > 0; i--) {
@@ -41,7 +49,13 @@ document.body.setAttribute('data-img', canvas.toDataURL('image/png'));
 
         const reqId = await start(objectId);
 
-        console.log(`${objectId} → ${reqId}`);
+        const result = `${objectId} → ${reqId}`;
+        console.log(result);
+        await writeResult(result);
+
+        objectList.pop();
+        fs.writeFileSync(objectListFile, objectList.join('\n'), 'utf8');
+
         console.log(`DONE ON ${new Date()}`);
         console.log('WAITING…');
         await sleep(REQUEST_TIMEOUT);
