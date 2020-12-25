@@ -100,7 +100,7 @@ async function parseXml(file) {
 }
 
 function extractData(dataObj) {
-    const info = dataObj.KPOKS;
+    const info = dataObj.KPOKS || dataObj.KVOKS;
     const flat = info.Realty.Flat;
     const rights = select(flat, 'Rights.Right');
     const objRight = select(info, 'ReestrExtract.ExtractObjectRight.ExtractObject.ObjectRight.Right');
