@@ -1,7 +1,7 @@
 {
-  "name": "rosr-extract",
+  "name": "rosreestr-tools",
   "version": "1.0.0",
-  "description": "Rosreestr archive data extractor to csv table",
+  "description": "Tools to grab Rosreestr archives and form object tables",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
